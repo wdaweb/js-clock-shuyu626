@@ -1,0 +1,504 @@
+/* 背景 */
+html,
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+/* 背景元素 */
+#bg {
+	width: 100%;
+	opacity: 0.8;
+}
+
+#bamboo {
+	width: 350px;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+
+#plum {
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: 0.8;
+}
+
+#mountain {
+	height: 500px;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	opacity: 0.7;
+}
+
+#mountain2 {
+	height: 500px;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	opacity: 0.7;
+}
+
+#mountain3 {
+	height: 800px;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	opacity: 0.3;
+}
+
+#mountain4 {
+	height: 800px;
+	position: absolute;
+	right: -10%;
+	bottom: 10%;
+	opacity: 0.2;
+	transform: rotateY(180deg);
+}
+
+#bird {
+	position: absolute;
+	left: 65%;
+	top: 10%;
+	opacity: 0.7;
+	animation: fly 3s infinite;
+}
+@keyframes fly {
+	from {
+		transform: translateY(0px);
+	}
+	50% {
+		transform: translateY(-3px);
+	}
+	100% {
+		transform: translateY(0px);
+	}
+}
+
+#bird2 {
+	position: absolute;
+	right: 2%;
+	top: 2%;
+	opacity: 0.7;
+	transform: rotateY(180deg);
+	animation: fly 2s 1s infinite;
+}
+
+#sun {
+	width: 600px;
+	position: absolute;
+	top: 4%;
+	right: 6%;
+	opacity: 0.9;
+	transform: rotate(-8deg);
+}
+
+#desk {
+	position: absolute;
+	left: 4%;
+	bottom: -15%;
+	opacity: 0.7;
+}
+
+#tube {
+	width: 40px;
+	position: absolute;
+	opacity: 0.9;
+	left: 26%;
+	bottom: 22.5%;
+	cursor: pointer;
+	animation: rotate 1s infinite;
+}
+
+@keyframes rotate {
+	0% {
+		transform: rotate(-3deg);
+	}
+	50% {
+		transform: rotate(3deg);
+	}
+	100% {
+		transform: rotate(-3deg);
+	}
+}
+
+#clk {
+	position: absolute;
+	margin: auto;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	transform: translatex(-5px);
+}
+#cloud {
+	height: 900px;
+	position: absolute;
+	left: -30%;
+	bottom: -5%;
+	z-index: 15;
+	opacity: 0.9;
+	/* 忽略點擊事件 */
+	pointer-events: none;
+}
+
+#cloud2 {
+	height: 900px;
+	position: absolute;
+	right: -30%;
+	bottom: 0%;
+	z-index: 15;
+	opacity: 0.9;
+	pointer-events: none;
+}
+
+/* 左側雲的動畫 往左飄~*/
+@keyframes moveLeft {
+	0% {
+		left: -30%;
+	}
+	100% {
+		left: -200%;
+		opacity: 0;
+	}
+}
+/* 右側雲的動畫 往右飄~*/
+@keyframes moveRight {
+	0% {
+		right: -30%;
+	}
+	100% {
+		right: -200%;
+		opacity: 0;
+	}
+}
+
+/* 顯示時間 */
+#hours {
+	position: absolute;
+	top: 10%;
+	left: 42.8%;
+	font-weight: bold;
+	font-size: 4rem;
+	color: #000;
+	/* font-family: '標楷體'; */
+}
+#minutes {
+	position: absolute;
+	top: 10%;
+	left: 48.3%;
+	font-weight: bold;
+	font-size: 4rem;
+	color: #000;
+	/* font-family: '標楷體'; */
+}
+#seconds {
+	position: absolute;
+	top: 10%;
+	left: 53.8%;
+	font-weight: bold;
+	font-size: 4rem;
+	color: #000;
+	/* font-family: '標楷體'; */
+}
+#ampm {
+	position: absolute;
+	top: 9%;
+	left: 58%;
+	font-weight: bold;
+	font-size: 2em;
+	color: #000;
+	font-family: cursive;
+}
+
+/* 太極 */
+#taichi {
+	transform: rotate(360deg);
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	margin: auto;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	animation: spin 20s linear infinite;
+}
+
+/* 太極旋轉動畫 */
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.taichi {
+	width: 200px;
+	height: 200px;
+	background: linear-gradient(90deg, white 50%, black 0%);
+	border-radius: 50%;
+	box-shadow: 0 0 25px 5px rgba(0, 0, 0, 0.3);
+	position: absolute;
+	/* left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%); */
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	z-index: 20;
+}
+
+/* 大白圓 */
+.taichi::before {
+	content: '';
+	width: 100px;
+	height: 100px;
+	background: white;
+	border-radius: 50%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	margin: auto;
+}
+
+/* 大黑圓 */
+.taichi::after {
+	content: '';
+	width: 100px;
+	height: 100px;
+	background: black;
+	border-radius: 50%;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	margin: auto;
+}
+
+.yinyang {
+	border-radius: 50%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	/* background: red; */
+}
+
+/* 小白圓 */
+.yinyang::before {
+	content: '';
+	width: 25px;
+	height: 25px;
+	background: white;
+	border-radius: 50%;
+	position: absolute;
+	right: 0;
+	left: 0;
+	bottom: 25%;
+	margin: auto;
+	transform: translateY(50%);
+	z-index: 1;
+}
+
+/* 小黑圓 */
+.yinyang::after {
+	content: '';
+	width: 25px;
+	height: 25px;
+	background: black;
+	border-radius: 50%;
+	position: absolute;
+	right: 0;
+	left: 0;
+	top: 25%;
+	margin: auto;
+	transform: translateY(-50%);
+}
+
+/* 時鐘 */
+#clock {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	/* border: 1px solid black; */
+	width: 500px;
+	height: 500px;
+}
+
+/* 指針 秒 軌道 */
+.circle1 {
+	width: 280px;
+	height: 280px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	/* border: 1px solid black; */
+}
+
+.circle1 svg {
+	position: absolute;
+	width: 280px;
+	height: 280px;
+	transform: rotate(270deg);
+}
+
+.circle1 svg circle {
+	width: 100%;
+	height: 100%;
+	fill: transparent;
+	stroke-width: 6;
+	stroke-dasharray: 806;
+
+	/* 置中 */
+	transform: translate(70px, 70px);
+}
+
+/* 指針 分 軌道 */
+.circle2 {
+	width: 352px;
+	height: 352px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+}
+
+.circle2 svg {
+	position: absolute;
+	width: 352px;
+	height: 352px;
+	transform: rotate(270deg);
+}
+
+.circle2 svg circle {
+	width: 100%;
+	height: 100%;
+	fill: transparent;
+	stroke-width: 6;
+	stroke-dasharray: 1046;
+
+	transform: translate(105px, 105px);
+}
+
+/* 指針 時 軌道 */
+.circle3 {
+	width: 450px;
+	height: 450px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+}
+
+.circle3 svg {
+	position: absolute;
+	width: 450px;
+	height: 450px;
+	transform: rotate(270deg);
+}
+
+.circle3 svg circle {
+	width: 100%;
+	height: 100%;
+	fill: transparent;
+	stroke-width: 6;
+	stroke-dasharray: 1336;
+	transform: translate(155px, 155px);
+}
+
+/* 圓球指針 */
+.dots {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	display: flex;
+	justify-content: center;
+}
+
+.dots::before {
+	content: '';
+	position: absolute;
+	top: 0px;
+	width: 22px;
+	height: 22px;
+	background: var(--clr);
+	border-radius: 50%;
+	box-shadow: 0 0 20px var(--clr), 0 0 40px var(--clr), 0 0 60px var(--clr);
+}
+
+/* 抽籤視窗 */
+.popup {
+	/* 隱藏彈出視窗 */
+	display: none;
+	position: fixed;
+	z-index: 20;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.4); /* 使用半透明黑色背景 */
+}
+
+.popup-content {
+	background-color: #fefefe; /* 白色背景 */
+	margin: 15% auto; /* 距離上方15%，水平置中 */
+	padding: 20px;
+	border: 1px solid #888; /* 灰色邊框 */
+	width: 60%; /* 寬度80% */
+	height: 25%;
+}
+
+.close {
+	float: right; /* 右浮動 */
+	font-size: 28px;
+	font-weight: bold;
+	cursor: pointer;
+	position: relative;
+	top: -10px;
+}
+
+.close:hover,
+.close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+#guaImage {
+	position: relative;
+	top: 20%;
+	float: left;
+}
+#guaName {
+	position: relative;
+	top: 14%;
+}
+#guaContent {
+	position: relative;
+	top: 11%;
+}

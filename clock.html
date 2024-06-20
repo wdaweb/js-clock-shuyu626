@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./clock.css">
+</head>
+
+<body>
+    <img id="bg" src="./images/">
+    <img id="plum" src="./images//plum.png">
+    <img id="mountain" src="./images//mountain.png">
+    <img id="mountain3" src="./images//mountain.png">
+    <img id="mountain2" src="./images//mountain2.png">
+    <img id="mountain4" src="./images//mountain.png">
+    <img id="bamboo" src="./images//bamboo.png">
+    <img id="sun" src="./images//sun.png">
+    <img id="bird" src="./images//bird.png">
+    <img id="bird2" src="./images//bird.png">
+    <img id="desk" src="./images//desk.png">
+    <img id="tube" src="./images//tube.png">
+    <img id="cloud" src="./images//cloud.png" alt="">
+    <img id="cloud2" src="./images//cloud2.png" alt="">
+    <img id="clk" src="./images//clock.gif" alt="">
+
+    <!-- 太極 -->
+    <div id="taichi">
+        <div class="taichi">
+            <div class="yinyang"></div>
+        </div>
+    </div>
+
+    <!-- 時鐘 -->
+    <div id="clock">
+        <!-- css變數 -->
+        <!-- 宣告：--名稱: 值; -->
+        <!-- 使用：屬性：var(--名稱, 預設值) -->
+        <div class="circle1" style="--clr:#b70909">
+            <div class="dots hr_dot"></div>
+            <svg>
+                <!-- cx圓心點的x軸 cy圓心點的y座標 r半徑-->
+                <circle cx="70" cy="70" r="130" id="hh"></circle>
+            </svg>
+        </div>
+
+        <div class="circle2" style="--clr:#1e1e1e">
+            <div class="dots min_dot"></div>
+            <svg>
+                <circle cx="70" cy="70" r="168" id="mm"></circle>
+            </svg>
+        </div>
+        <div class="circle3" style="--clr:#8c8c8c">
+            <div class="dots sec_dot"></div>
+            <svg>
+                <circle cx="70" cy="70" r="214" id="ss"></circle>
+            </svg>
+        </div>
+    </div>
+
+
+    <div id="timer">
+        <div id="hours">00</div>
+        <div id="minutes">00</div>
+        <div id="seconds">00</div>
+    </div>
+    <div id="ampm">AM</div>
+
+
+    <!-- 抽籤視窗 -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <!-- 關閉按鈕 -->
+            <span class="close">&times;</span>
+
+            <!-- 卦象圖 -->
+            <img id="guaImage" src="">
+            <!-- 卦象名 -->
+            <h2 id="guaName"></h2>
+            <!-- 卦象內容 -->
+            <p id="guaContent"></p>
+        </div>
+    </div>
+
+
+
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        // 雲動畫
+        // 網頁載入後，雲就往兩側飄走~
+        $(document).ready(function () {
+            $('#cloud').css('animation', 'moveLeft 150s linear infinite')
+            $('#cloud2').css('animation', 'moveRight 150s linear infinite')
+        })
+
+
+
+
+        // 時鐘
+        const clock = () => {
+            const date = new Date()
+            let h = date.getHours()
+            let m = date.getMinutes()
+            let s = date.getSeconds()
+            // 超過12小時則為 幕(晚上)，未超過為 朝(早上)
+            let am = h >= 12 ? "幕" : "朝"
+
+            if (h > 12) {
+                h -= 12
+            }
+            // 如果數字小於 10 就在前面補一個0
+            if (h < 10) {
+                h = "0" + h;
+            }
+            if (m < 10) {
+                m = "0" + m;
+            }
+            if (s < 10) {
+                s = "0" + s;
+            }
+
+            // 時間
+            $('#hours').text(h)
+            $('#minutes').text(m)
+            $('#seconds').text(s)
+            $('#ampm').text(am)
+
+            // 圓球 指針
+            $('.hr_dot').css('transform', `rotate(${h * 30}deg)`)
+            $('.min_dot').css('transform', `rotate(${m * 6}deg)`)
+            $('.sec_dot').css('transform', `rotate(${s * 6}deg)`)
+
+        }
+
+        setInterval(clock, 1000)
+        clock()
+
+
+
+
+        // 抽籤
+
+        // 卦象清單，包含卦的名稱、內容和圖片
+        const guaList = [
+            { name: '乾為天', content: '運勢強旺，諸事順心，做任何事都可望水到渠成，名利雙收，如能把握機會，則有飛龍在天，大利四方之象。但仍須保持謙和態度，謹慎行事，過度自滿將招致反效果，物極必反。', imgSrc: './images/乾為天.png' },
+            { name: '澤天屢', content: '運勢目前處於先苦後甜的階段，有可能會遇到困難和危機。要小心謹慎地行事，不要急躁衝動。但可以期待風雨過後，天晴日出，運勢會漸漸好轉。', imgSrc: './images/澤天屢.png' },
+            { name: '天火同人', content: '你的運勢非常好，但需要與他人合作、同心協力，才能讓你的計劃成功，獲得財富和成就。', imgSrc: './images/天火同人.png' },
+            { name: '天雷無妄', content: '運勢平平，可能會發生小的災禍，但是這卦的象徵是先凶後吉，只要堅持做正確的事，不要只考慮眼前的利益，就有機會扭轉局勢，化險為夷。', imgSrc: './images/天雷無妄.png' },
+            { name: '天風姤', content: '運勢逐漸下滑，各方面都不太順遂。需要小心處理事情，尤其是要避免捲入感情糾紛之中。', imgSrc: './images/天風姤.png' },
+            { name: '天水訟', content: '目前運勢不順，可能會受到誣陷或捲入是非紛爭中，「訟」象徵訴訟之意，預示大凶之象。建議要謹慎應對，以和為貴，避免製造敵人為上策。', imgSrc: './images/天水訟.png' },
+            { name: '天山遯', content: '運勢開始逐漸衰退，眼下小人得志，此時應該明智地退讓，等待時機。不要逆勢而行，謹慎言行，可以平安無事。', imgSrc: './images/天山遯.png' },
+            { name: '天地否', content: '現在的運勢不順，有很多事情都不順利，需要多加耐心等待，不要急著行動，等時機好轉後再做打算。', imgSrc: './images/天地否.png' }
+        ];
+
+        // 點擊籤筒，視窗跳出來，隨機抽籤
+        $('#tube').on('click', () => {
+            // 隨機選擇一個卦象
+            const random = Math.floor(Math.random() * guaList.length);
+            // 更新彈出視窗中的內容
+            $('#guaName').text(guaList[random].name); // 取卦象名
+            $('#guaContent').text(guaList[random].content); // 取卦象 內容
+            $('#guaImage').attr('src', guaList[random].imgSrc); // 取卦象 圖
+            // 顯示彈出視窗(原本隱藏，點的時候才出現)
+            $('#popup').css('display', 'block');
+        });
+
+        // 關閉視窗
+        // 叉叉 點擊事件
+        $('.close').on('click', () => {
+            // 點擊後 彈跳視窗不見
+            $('#popup').css('display', 'none');
+        });
+
+    </script>
+
+</body>
+
+</html>
